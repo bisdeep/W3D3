@@ -18,7 +18,6 @@ class Recursion
         new_arr
     end
 
-
     def exp1(base, exp)
       return 1 if exp == 0
       base * exp1(base, exp-1)  
@@ -42,5 +41,8 @@ class Recursion
         end  
 
     end
+
+    def deep_dup()
+
 
 end
