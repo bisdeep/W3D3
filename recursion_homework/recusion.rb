@@ -42,7 +42,64 @@ class Recursion
 
     end
 
-    def deep_dup()
+    def deep_dup(array)
+        newArr = []
+        
+        #return element = array[0].to_s if array.length <= 1
+        return array if !(array.is_a?(Array))
+
+        array.each_with_index do |subarray, idx|
+
+            newArr << deep_dup(subarray)
+
+        end
+
+        return newArr
+    end
+
+    def fibonacci(n) #n == 5
+        return [0,1].take(n) if n < 3
+        prev = fibonacci(n-1)
+        prev << prev[-1] + prev[-2]    
+    end
+    #0, 1, 1, 2, 3, 5, 8, 13, 21
+    # 
+
+    def fibonacci2(n)
+        return [] if n == 0
+        return [0] if n == 1
+
+        newArr = [0, 1]
+        i = 0
+        while newArr.length < n
+            newArr << newArr[i] + newArr[i+1]
+            i += 1
+        end
+        return newArr
+    end
+
+        def bsearch(array, n)
+            #if middle element, return index of that,
+            #elsif if its smaller than middle element, do binary search on that
+            #else do binary search on the elements t the right of the middle
+            mid = array.length /  2
+
+            if array[mid] == n
+
+                return mid
+
+            elsif array[mid] > n
+                bsearch(array[0...mid], n)  
+
+            else
+                bsearch(array[mid+1..-1], n) + mid + 1 
+                #if you count it from mid instead of an index after, 
+                #you can remove the + 1
+            end
+        end
+    
+
+
 
 
 end
